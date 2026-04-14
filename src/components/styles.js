@@ -55,3 +55,10 @@ export const CustomerCard = styled.div`
     background: ${props => (props.active ? "#3b55d1" : "#e6e6e6")};
   }
 `;
+
+export const CenteredHeading = styled.h4`
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+`;

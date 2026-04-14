@@ -3,13 +3,28 @@ import Filters from "./filters";
 import TransactionList from "./transactionList";
 import { calculatePoints } from "../utils/rewardCalculator";
 import { getMonth, getYear } from "../utils/dateUtils";
-import { Card } from "./styles";
+import { Card, CenteredHeading } from "./styles";
 import { MONTHS } from "../constants";
 import logger from "../logger";
 
 function RewardSummary({ data, customerId }) {
+
+  //last 3 months 
+  const getLast3Months = () => {
+    const now = new Date();
+    return [0, 1, 2].map(i => {
+      const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      return {
+        month: d.getMonth() + 1,
+        year: d.getFullYear()
+      };
+    });
+  };
+
+  const last3 = getLast3Months();
+
   const [month, setMonth] = useState("");
-  const [year, setYear] = useState("2025");
+  const [year, setYear] = useState(last3[0].year.toString());
   const [collapsedMonths, setCollapsedMonths] = useState([]);
 
   const toggleMonth = (m) => {
@@ -29,10 +44,23 @@ function RewardSummary({ data, customerId }) {
   };
 
   const filtered = data.filter((t) => {
+    const txnMonth = getMonth(t.date);
+    const txnYear = getYear(t.date);
+
+    if (month) {
+      return (
+        t.customerId === customerId &&
+        txnMonth === Number(month) &&
+        txnYear.toString() === year
+      );
+    }
+
+    // Default last 3 months
     return (
       t.customerId === customerId &&
-      (!month || getMonth(t.date) === Number(month)) &&
-      (!year || getYear(t.date).toString() === year)
+      last3.some(
+        (m) => m.month === txnMonth && m.year === txnYear
+      )
     );
   });
 
@@ -53,10 +81,17 @@ function RewardSummary({ data, customerId }) {
     <Card>
       <h3>Rewards Summary</h3>
 
-      <Filters month={month} year={year} setMonth={setMonth} setYear={setYear} />
+      <Filters
+        month={month}
+        year={year}
+        setMonth={setMonth}
+        setYear={setYear}
+      />
+
+      {!month && <p>Showing last 3 months</p>}
 
       {filtered.length === 0 ? (
-        <p>No transactions found for the selected period.</p>
+        <CenteredHeading>No Transactions</CenteredHeading>
       ) : (
         <>
           {Object.entries(grouped).map(([m, txns]) => {

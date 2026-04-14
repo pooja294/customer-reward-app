@@ -23,3 +23,7 @@ test("negative", () => {
 test("null", () => {
   expect(calculatePoints(null)).toBe(0);
 });
+
+test("zero amount", () => {
+  expect(calculatePoints(0)).toBe(0);
+});
