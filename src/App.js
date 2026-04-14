@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { fetchTransactions } from "./services/api";
+import CustomerList from "./components/customerList";
+import RewardSummary from "./components/rewardSummary";
+import logger from "./logger";
 
 function App() {
+  const [data, setData] = useState([]);
+  const [customer, setCustomer] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchTransactions()
+      .then(res => {
+        setData(res);
+        logger.info("Data loaded");
+      })
+      .catch(() => logger.error("Error"))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <h2>Loading...</h2>;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <CustomerList data={data} onSelect={setCustomer} />
+      {customer && (
+        <RewardSummary data={data} customerId={customer} />
+      )}
     </div>
   );
 }
