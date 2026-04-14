@@ -1,70 +1,200 @@
-# Getting Started with Create React App
+# Customer Rewards Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based application that calculates and displays reward points for customers based on their transactions. The app includes filtering, pagination, and detailed transaction breakdowns.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+# Features
 
-### `npm start`
+* ✅ Customer selection with pagination
+* ✅ Reward points calculation logic
+* ✅ Monthly reward summary
+* ✅ Expand/collapse transaction view
+* ✅ Month & Year filters
+* ✅ Default view: **Last 3 months data**
+* ✅ Graceful handling of empty data
+* ✅ Unit test coverage for reward logic
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Tech Stack
 
-### `npm test`
+* React (Hooks)
+* JavaScript (ES6+)
+* Styled Components
+* Jest (Unit Testing)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+# Project Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. Clone the repository
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/pooja294/customer-reward-app.git
+cd customer-rewards-app
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Install dependencies
 
-### `npm run eject`
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# How to Run the Application
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* App runs on: `http://localhost:3000`
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Run Test Cases
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm test
+```
 
-### Code Splitting
+* Runs Jest test suite
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+# Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+public/
+│
+├── data/
+│   ├── transactions.json
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+src/
+│
+├── components/
+│   ├── customerList.js
+│   ├── rewardSummary.js
+│   ├── transactionList.js
+│   ├── filters.js
+│   └── styles.js
+│   └── pagination.js
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+│
+├── utils/
+│   ├── rewardCalculator.js
+│   └── rewardCalculator.test.js
+│   └── dateUtils.js
+│
+├── constants/
+│   └── index.js
+│
+├── services/
+│   └── api.js
+│
+├── App.js
+└── logger.js
+```
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Component Details
 
-### `npm run build` fails to minify
+## 1. CustomerList
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Displays unique customers
+* Supports pagination
+* Allows selecting a customer
+* Logs selection events
+
+---
+
+## 2. RewardSummary
+
+* Core component for reward calculation
+* Filters transactions by:
+
+  * Customer
+  * Month
+  * Year
+* Default behavior:
+
+  * Shows **last 3 months data**
+* Groups transactions by month
+* Displays:
+
+  * Monthly points
+  * Total points
+* Expand/collapse functionality per month
+
+---
+
+## 3. TransactionList
+
+* Displays transaction details
+* Shows:
+
+  * Amount
+  * Calculated reward points
+* Styled using card layout
+* Includes centered **“Transactions”** heading
+
+---
+
+## 4. Filters
+
+* Dropdowns for:
+
+  * Month (JAN–DEC)
+  * Year (2025–2021)
+* Updates reward summary dynamically
+
+---
+
+## 5. Reward Calculator (Utility)
+
+### Logic:
+
+* No points for amount ≤ 50
+* 1 point per dollar for amount between 50–100
+* 2 points per dollar for amount > 100
+
+---
+
+# Application Screenshots
+
+## Dashboard View
+
+<img width="3000" height="1824" alt="image" src="https://github.com/user-attachments/assets/66fdc538-d5c0-4885-9996-d15acccc99dc" />
+<img width="3000" height="1822" alt="image" src="https://github.com/user-attachments/assets/192fae2b-6ea4-455a-b5d1-53c607d37f24" />
+
+
+## Customer Selection
+
+<img width="3000" height="1376" alt="image" src="https://github.com/user-attachments/assets/552f5b01-fdfc-4397-937b-d722c7078d16" />
+
+
+## Rewards Summary (Expanded)
+
+<img width="3000" height="1816" alt="image" src="https://github.com/user-attachments/assets/b4c37589-fe4a-4c4e-8f14-6c14a46dc61c" />
+<img width="3000" height="1814" alt="image" src="https://github.com/user-attachments/assets/a32a0aa9-81b6-4de4-b471-64856b02b8ba" />
+
+
+## No Transactions State
+
+<img width="3000" height="1836" alt="image" src="https://github.com/user-attachments/assets/43289217-727b-4ea8-b42e-fe0545842b9b" />
+
+
+---
+
+# Test Case Results
+
+## Jest Test Success Output
+
+<img width="1608" height="1270" alt="image" src="https://github.com/user-attachments/assets/396f2cf0-497c-4f1c-93a8-6b9a0362a163" />
+
+
+---
