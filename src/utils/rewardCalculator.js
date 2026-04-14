@@ -1,5 +1,10 @@
+import logger from "../logger";
+
 export const calculatePoints = (amount) => {
-  if (!amount || amount < 0) return 0;
+  if (!amount || amount < 0) {
+    logger.warn({ message: "Invalid amount", amount });
+    return 0;
+  }
 
   let points = 0;
 
@@ -10,5 +15,14 @@ export const calculatePoints = (amount) => {
     points += (amount - 50);
   }
 
-  return Math.floor(points);
+
+  const result = Math.floor(points);
+
+  logger.debug({
+    message: "Points calculated",
+    amount,
+    points: result
+  });
+
+  return result;
 };

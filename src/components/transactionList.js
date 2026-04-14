@@ -1,17 +1,20 @@
 import { calculatePoints } from "../utils/rewardCalculator";
+import { Card } from "./styles";
 
 function TransactionList({ transactions }) {
-  if (!transactions.length) return <p>No transactions</p>;
+  if (!transactions.length) return null;
 
   return (
-    <div>
+    <Card>
       <h4>Transactions</h4>
+
       {transactions.map(txn => (
-        <div key={txn.transactionId}>
-          <p>{txn.amount} → {calculatePoints(txn.amount)} points</p>
-        </div>
+        <Card key={txn.transactionId}>
+          <p><b>Amount:</b> ${txn.amount}</p>
+          <p><b>Points:</b> {calculatePoints(txn.amount)}</p>
+        </Card>
       ))}
-    </div>
+    </Card>
   );
 }
 

@@ -1,270 +1,322 @@
 [
     {
         "customerId": 1,
+        "customerName": "Rahul",
         "transactionId": "T1",
         "amount": 120,
         "date": "2025-03-15"
     },
     {
         "customerId": 1,
+        "customerName": "Rahul",
         "transactionId": "T2",
         "amount": 80,
         "date": "2025-02-10"
     },
     {
         "customerId": 1,
+        "customerName": "Rahul",
         "transactionId": "T3",
         "amount": 45,
         "date": "2025-01-05"
     },
+     {
+        "customerId": 1,
+        "customerName": "Rahul",
+        "transactionId": "T4",
+        "amount": 450,
+        "date": "2025-01-05"
+    },
     {
         "customerId": 2,
-        "transactionId": "T4",
+        "customerName": "Sanjay",
+        "transactionId": "T67",
         "amount": 200,
         "date": "2025-03-01"
     },
     {
         "customerId": 2,
+        "customerName": "Sanjay",
         "transactionId": "T5",
         "amount": 150,
         "date": "2025-02-18"
     },
     {
         "customerId": 2,
+        "customerName": "Sanjay",
         "transactionId": "T6",
         "amount": 60,
         "date": "2025-01-25"
     },
     {
         "customerId": 3,
+        "customerName": "Sayali",
         "transactionId": "T7",
         "amount": 90,
         "date": "2025-03-20"
     },
     {
         "customerId": 3,
+        "customerName": "Sayali",
         "transactionId": "T8",
         "amount": 110,
         "date": "2025-02-14"
     },
     {
         "customerId": 3,
+        "customerName": "Sayali",
         "transactionId": "T9",
         "amount": 40,
         "date": "2025-01-10"
     },
     {
         "customerId": 4,
+        "customerName": "Vaibhavi",
         "transactionId": "T10",
         "amount": 75,
         "date": "2025-03-11"
     },
     {
         "customerId": 4,
+        "customerName": "Vaibhavi",
         "transactionId": "T11",
         "amount": 130,
         "date": "2025-02-09"
     },
     {
         "customerId": 4,
+        "customerName": "Vaibhavi",
         "transactionId": "T12",
         "amount": 55,
         "date": "2025-01-19"
     },
     {
         "customerId": 5,
+        "customerName": "Sujoy",
         "transactionId": "T13",
         "amount": 300,
         "date": "2025-03-22"
     },
     {
         "customerId": 5,
+        "customerName": "Sujoy",
         "transactionId": "T14",
         "amount": 20,
         "date": "2025-02-02"
     },
     {
         "customerId": 5,
+        "customerName": "Sujoy",
         "transactionId": "T15",
         "amount": 95,
         "date": "2025-01-28"
     },
     {
         "customerId": 6,
+        "customerName": "Ankit",
         "transactionId": "T16",
         "amount": 60,
         "date": "2025-03-17"
     },
     {
         "customerId": 6,
+        "customerName": "Ankit",
         "transactionId": "T17",
         "amount": 140,
         "date": "2025-02-06"
     },
     {
         "customerId": 6,
+        "customerName": "Ankit",
         "transactionId": "T18",
         "amount": 75,
         "date": "2025-01-15"
     },
     {
         "customerId": 7,
+        "customerName": "Nikita",
         "transactionId": "T19",
         "amount": 50,
         "date": "2025-03-03"
     },
     {
         "customerId": 7,
+        "customerName": "Nikita",
         "transactionId": "T20",
         "amount": 180,
         "date": "2025-02-21"
     },
     {
         "customerId": 7,
+        "customerName": "Nikita",
         "transactionId": "T21",
         "amount": 65,
         "date": "2025-01-30"
     },
     {
         "customerId": 8,
+        "customerName": "Roopal",
         "transactionId": "T22",
         "amount": 220,
         "date": "2025-03-29"
     },
     {
         "customerId": 8,
+        "customerName": "Roopal",
         "transactionId": "T23",
         "amount": 85,
         "date": "2025-02-13"
     },
     {
         "customerId": 8,
+        "customerName": "Roopal",
         "transactionId": "T24",
         "amount": 30,
         "date": "2025-01-07"
     },
     {
         "customerId": 9,
+        "customerName": "Meet",
         "transactionId": "T25",
         "amount": 100,
         "date": "2025-03-08"
     },
     {
         "customerId": 9,
+        "customerName": "Meet",
         "transactionId": "T26",
         "amount": 160,
         "date": "2025-02-26"
     },
     {
         "customerId": 9,
+        "customerName": "Meet",
         "transactionId": "T27",
         "amount": 70,
         "date": "2025-01-11"
     },
     {
         "customerId": 10,
+        "customerName": "Ankita",
         "transactionId": "T28",
         "amount": 40,
         "date": "2025-03-14"
     },
     {
         "customerId": 10,
+        "customerName": "Ankita",
         "transactionId": "T29",
         "amount": 115,
         "date": "2025-02-19"
     },
     {
         "customerId": 10,
+        "customerName": "Ankita",
         "transactionId": "T30",
         "amount": 90,
         "date": "2025-01-04"
     },
     {
         "customerId": 11,
+        "customerName": "Pranay",
         "transactionId": "T31",
         "amount": 250,
         "date": "2025-03-25"
     },
     {
         "customerId": 11,
+        "customerName": "Pranay",
         "transactionId": "T32",
         "amount": 60,
         "date": "2025-02-17"
     },
     {
         "customerId": 11,
+        "customerName": "Pranay",
         "transactionId": "T33",
         "amount": 45,
         "date": "2025-01-09"
     },
     {
         "customerId": 12,
+        "customerName": "Shraddha",
         "transactionId": "T34",
         "amount": 180,
         "date": "2025-03-06"
     },
     {
         "customerId": 12,
+        "customerName": "Shraddha",
         "transactionId": "T35",
         "amount": 75,
         "date": "2025-02-12"
     },
     {
         "customerId": 12,
+        "customerName": "Shraddha",
         "transactionId": "T36",
         "amount": 55,
         "date": "2025-01-23"
     },
     {
         "customerId": 13,
+        "customerName": "Rudresh",
         "transactionId": "T37",
         "amount": 95,
         "date": "2025-03-18"
     },
     {
         "customerId": 13,
+        "customerName": "Rudresh",
         "transactionId": "T38",
         "amount": 130,
         "date": "2025-02-05"
     },
     {
         "customerId": 13,
+        "customerName": "Rudresh",
         "transactionId": "T39",
         "amount": 85,
         "date": "2025-01-12"
     },
     {
         "customerId": 14,
+        "customerName": "Janavi",
         "transactionId": "T40",
         "amount": 210,
         "date": "2025-03-27"
     },
     {
         "customerId": 14,
+        "customerName": "Janavi",
         "transactionId": "T41",
         "amount": 60,
         "date": "2025-02-16"
     },
     {
         "customerId": 14,
+        "customerName": "Janavi",
         "transactionId": "T42",
         "amount": 35,
         "date": "2025-01-08"
     },
     {
         "customerId": 15,
+        "customerName": "Kaira",
         "transactionId": "T43",
         "amount": 140,
         "date": "2025-03-02"
     },
     {
         "customerId": 15,
+        "customerName": "Kaira",
         "transactionId": "T44",
         "amount": 100,
         "date": "2025-02-20"
     },
     {
         "customerId": 15,
+        "customerName": "Kaira",
         "transactionId": "T45",
         "amount": 50,
         "date": "2025-01-29"

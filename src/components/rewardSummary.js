@@ -3,13 +3,32 @@ import Filters from "./filters";
 import TransactionList from "./transactionList";
 import { calculatePoints } from "../utils/rewardCalculator";
 import { getMonth, getYear } from "../utils/dateUtils";
+import { Card } from "./styles";
+import { MONTHS } from "../constants";
+import logger from "../logger";
 
 function RewardSummary({ data, customerId }) {
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("2025");
-  const [selectedTxns, setSelectedTxns] = useState([]);
+  const [collapsedMonths, setCollapsedMonths] = useState([]);
 
-  const filtered = data.filter(t => {
+  const toggleMonth = (m) => {
+    setCollapsedMonths((prev) => {
+      const updated = prev.includes(m)
+        ? prev.filter((x) => x !== m)
+        : [...prev, m];
+
+      logger.info({
+        message: "Month toggle",
+        month: m,
+        action: prev.includes(m) ? "collapse" : "expand"
+      });
+
+      return updated;
+    });
+  };
+
+  const filtered = data.filter((t) => {
     return (
       t.customerId === customerId &&
       (!month || getMonth(t.date) === Number(month)) &&
@@ -17,44 +36,58 @@ function RewardSummary({ data, customerId }) {
     );
   });
 
-  if (!filtered.length) return <h3>No transactions</h3>;
-
   const grouped = {};
-
-  filtered.forEach(t => {
+  filtered.forEach((t) => {
     const key = getMonth(t.date);
     if (!grouped[key]) grouped[key] = [];
     grouped[key].push(t);
   });
 
-  let total = 0;
+  const total = Object.values(grouped).reduce(
+    (sum, txns) =>
+      sum + txns.reduce((s, t) => s + calculatePoints(t.amount), 0),
+    0
+  );
 
   return (
-    <div>
-      <Filters {...{ month, year, setMonth, setYear }} />
+    <Card>
+      <h3>Rewards Summary</h3>
 
-      {Object.entries(grouped).map(([m, txns]) => {
-        const points = txns.reduce(
-          (sum, t) => sum + calculatePoints(t.amount),
-          0
-        );
+      <Filters month={month} year={year} setMonth={setMonth} setYear={setYear} />
 
-        total += points;
+      {filtered.length === 0 ? (
+        <p>No transactions found for the selected period.</p>
+      ) : (
+        <>
+          {Object.entries(grouped).map(([m, txns]) => {
+            const points = txns.reduce(
+              (sum, t) => sum + calculatePoints(t.amount),
+              0
+            );
 
-        return (
-          <div key={m}>
-            <h4 onClick={() => setSelectedTxns(txns)}>
-              Month {m}
-            </h4>
-            <p>Points: {points}</p>
-          </div>
-        );
-      })}
+            const isOpen = !collapsedMonths.includes(m);
 
-      <h2>Total: {total}</h2>
+            return (
+              <Card
+                key={m}
+                style={{ cursor: "pointer", marginBottom: "10px" }}
+              >
+                <div onClick={() => toggleMonth(m)}>
+                  <h4>{MONTHS[Number(m) - 1]}</h4>
+                  <p>Points: {points}</p>
+                </div>
 
-      <TransactionList transactions={selectedTxns} />
-    </div>
+                {isOpen && (
+                  <TransactionList transactions={txns} />
+                )}
+              </Card>
+            );
+          })}
+
+          <h2>Total Points: {total}</h2>
+        </>
+      )}
+    </Card>
   );
 }
 
